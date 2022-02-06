@@ -2,7 +2,7 @@ next[k]串第一个元素为-1
 之后若next[k+1]与needle[i]相等, k+=1
 如果不相等，k = next[k]
 
-'''python
+```python
 class Solution(object):
     def strStr(self, haystack, needle):
         """
@@ -38,4 +38,4 @@ class Solution(object):
             next[i] = k  
 
         return next
-'''
+```
