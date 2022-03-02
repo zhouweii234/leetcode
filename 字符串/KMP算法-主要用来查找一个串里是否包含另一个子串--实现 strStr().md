@@ -39,3 +39,34 @@ class Solution(object):
 
         return next
 ```
+
+
+```python
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        def getnext(needle):
+            next_ = [-1]*len(needle)
+            k = -1
+            for i in range(1, len(needle)):
+                while k > -1 and needle[k+1] != needle[i]:
+                    k = next_[k]
+                if needle[k+1] == needle[i]:
+                    k += 1
+                next_[i] = k
+            return next_
+            
+        if len(needle) == 0:
+            return 0
+
+        next_ = getnext(needle)
+        k = -1
+        for i in range(len(haystack)):
+            while k > -1 and needle[k+1] != haystack[i]: #这里记不住或者搞不懂就按创建next数组那里的写
+                k = next_[k]
+            if needle[k+1] == haystack[i]:
+                k += 1
+            if k == len(needle)-1:
+                return i - k
+        
+        return -1
+```
